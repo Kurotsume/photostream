@@ -1,0 +1,143 @@
+/* Site Colors:
+ #1A446C - blue grey menu top
+ #689OC1 - light blue
+ #D4E6F4 - very light blue
+ #EEE489 - light tan
+ #8D0O19 - burgandy
+ */
+ 
+html {
+     height: 100%; 
+     width: 100%; 
+     }
+
+body {
+     height: 100%; 
+     width:100%; 
+     margin:0; 
+     padding:0; 
+     border:0; 
+     background:#FFFFFF;
+     font: 13px/15px Verdana, Arial, Helvetica, sans-serif;
+     }
+     
+ img { 
+     border:none;
+     }
+a {
+  color:8D0O19
+  } 
+  
+#comments_table {
+    background-color: #f1f1c1;
+    border: 1px solid black;
+   /* text-align:center;*/
+}
+
+#header {
+        height:70px;
+        text-align:left;
+        background:#898989;
+        color:#D4E6F4;
+        padding:0;
+         }
+
+#header h1 {
+        padding:1em;
+        margin:0;
+        }
+         
+/* Note: IE 5 & 6 won't understand min-height */
+#main {
+      min-height:600px;
+      width:100%;
+      background: #FFFFFF;
+      padding: 2em;
+      }
+      
+#footer {
+        height:2em;
+        padding:1em;
+        text-align:center;
+        background: #898989;
+        color: #D4E6F4;
+         }
+/*         
+table.bordered tr th, table.bordered tr td {
+         border:1px solid #000000;
+         }
+          */
+
+         
+#tablefolderbar {
+    border: 1px solid grey;
+    font: 15px Verdana, Arial, Helvetica, sans-serif;     
+    margin-left:auto; 
+    margin-right:auto;
+    align:center;
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: collapse;
+}
+
+#thfolderbar {
+    font-weight: bold;
+}   
+
+td#folderbar {
+    height: 100px;
+}   
+
+#logfile {
+	color: #880000; 
+}
+
+td#folderimage {
+    
+    height: 110px;
+    width: 110px;    
+    border: 1px solid grey;
+    background-size: contain;
+}
+
+img#folderimage{
+    height: 100px;
+    width: 100px;    
+    
+}
+
+#nofolders {  
+    display: table-cell;
+    margin-left:auto; 
+    margin-right:auto;
+    align-content: center;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center; 
+}
+
+#outside {   
+    display: table-cell;
+    margin-left:auto; 
+    margin-right:auto;
+    align-content: center;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute; 
+    display: table; 
+}
+
+#nofoldersforbar {
+    border: none;
+    font: 15px Verdana, Arial, Helvetica, sans-serif;     
+    margin-left:auto; 
+    margin-right:auto;
+    align:center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#pagination .selected { font-weight: bold; color: #8D0D19;
+    border: 1px solid #8D0D19;}

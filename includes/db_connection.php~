@@ -1,0 +1,14 @@
+<?php 
+ if(!define("DB_SERVER","localhost")) ? null: define("DB_SERVER","localhost");
+ if(!define("DB_USER", "widget_cms")) ? null: define("DB_USER", "widget_cms");
+ if(!define("DB_PASS", "secretpassword")) ? null: define("DB_PASS", "secretpassword");
+ if(!define("DB_NAME", "widget_corp")) ? null : define("DB_NAME", "photo_gallery");
+ 
+ ///Create a database connection
+ //$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+ 
+ ///Test if connection succeeded
+ //if(mysqli_connect_error()){
+ //	die("The database connection failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");}
+
+?>

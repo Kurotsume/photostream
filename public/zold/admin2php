@@ -1,0 +1,39 @@
+<?php 
+require_once("../includes/initialize.php");
+if (!logged_in()){
+	redirect_to( "login.php");
+ }
+include_layout_template("header.php");
+
+
+
+
+
+$user = User::find_by_id(logged_in());
+echo "Welcome " . $user->full_name();
+echo "<br />";
+echo "<br />";
+echo "<a href='logout.php'>Logout</a>";
+
+echo "<br />";
+echo "<hr />";
+
+
+$file = LIB_PATH . DS . "log.txt";
+
+echo filereader($file);
+
+
+echo "<br />";
+echo "<hr />";
+echo "<br />";
+
+$users = User::find_all();
+foreach($users as $user){
+echo "User: " . $user->username . "<br />";
+echo "Name: " . $user->full_name() . "<br />";
+}
+
+
+include_layout_template("footer.php");
+?>
