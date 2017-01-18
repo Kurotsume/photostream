@@ -29,16 +29,22 @@
         </div><!-- navbar-header -->
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">             
+                        <ul class="nav navbar-nav">             
                 <li><a href="user_home.php">Home</a></li>
-                <li><a href="photo_upload.php">Upload Photos</a></li>
+                <li><a href="photo_upload.php">Photos</a></li>
                 <li><a href="photostream.php">Photostream</a></li>
-                <li><a href="manage_folders.php">Manage Folders</a></li>
-                <li><a href="edit_user.php">Edit User Settings</a></li>
-                <li><a href="new_account.php">Create new account</a></li>
-                <li><a href="contact_us.php">Contact Us</a></li>
-                <li><a href="user_login.php">Login</a></li> 
-                <li><a href="logout.php">Logout</a></li>            
+                <li><a href="manage_folders.php">Folders</a></li>
+                <li><a href="edit_user.php">Settings</a></li>
+                <li><a href="contact_us.php">Contact Us</a></li>        
+            </ul>
+            <ul class="nav navbar-nav navbar-right">                
+                <?php
+                    if (is_session_started() === FALSE) {
+                        echo '<li><a href="new_account.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li><li><a href="user_login.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>';
+                    } else {
+                        echo '<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>';
+                    }
+                ?>
             </ul>
         </div><!-- /.navbar-collapse -->
         

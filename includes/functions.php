@@ -113,6 +113,19 @@ function log_action($action, $message="") {
 
 }
 
+function is_session_started()
+{
+global $session1;
+
+    if ( php_sapi_name() !== 'cli' ) {
+        if ( version_compare(phpversion(), '5.4.0', '>=') ) {
+            return $session1->is_logged_in();
+        } else {
+            return session_id() === '' ? FALSE : TRUE;
+        }
+    }
+    return FALSE;
+}
 
 
 function picture_loader(){
