@@ -138,8 +138,15 @@ class Photograph extends DatabaseObject {
 	  
 	public static function find_users_folders($uid=0,$foldername) {
 	  	global $database;
-	 	 $user_array = static::find_by_sql("SELECT * FROM ". static::$table_name ." WHERE owner=" . $uid . " AND folder=" . $foldername." LIMIT 1");
-	 	 return !empty($user_array) ? array_shift($user_array) : false;
+	 	 $user_array = static::find_by_sql("SELECT * FROM ". static::$table_name ." WHERE owner=" . $uid . " AND folder='" . $foldername ."'");
+	 	 return !empty($user_array) ? $user_array : false;
+	  
+	  }	  
+	  
+        public static function find_userphotos_by_foldername($foldername,$user_id=0){
+	  	global $database;
+	 	 $user_array = static::find_by_sql("SELECT * FROM ". static::$table_name ." WHERE owner=" . $user_id . " AND folder='" . $foldername ."'");
+	 	 return !empty($user_array) ? $user_array : false;
 	  
 	  }	  
 	  
