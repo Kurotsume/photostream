@@ -113,6 +113,12 @@ function log_action($action, $message="") {
 
 }
 
+function clean($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+}
+
 function is_session_started()
 {
 global $session1;
@@ -133,8 +139,8 @@ global $session1;
 
 if(isset($_POST['submit'])) {
   $photo = new Photograph();
-  $photo->caption = $database->escape_value(trim($_POST['caption']));
-  $photo->private =  $database->escape_value(trim($_POST['sharephoto']));
+  $photo->caption = preg_replace("/[^ \w]+/", "", trim($_POST['caption']));
+  $photo->private = trim($_POST['sharephoto']);
   $photo->owner = $session1->user_id;
   $errors = "";
   ///var/www/ExerciseFiles/Chapter_15/15_03/Photo_Gallery/public/trim($_POST['selectfolder'])
@@ -143,7 +149,7 @@ if(isset($_POST['submit'])) {
   $photo->attach_file($_FILES['file_upload']);
   
    if(trim($_POST['selectfolder']) <> "Make new box"){
-    $selectfolder = $database->escape_value(trim($_POST['selectfolder']));
+    $selectfolder = clean(trim($_POST['selectfolder']));
     $photo->set_path("images" . DS . $session1->user_id . DS . $selectfolder .  DS . $photo->filename);
     $photo->folder = $selectfolder;
     
@@ -176,7 +182,7 @@ if(isset($_POST['submit'])) {
     
         if(!$errors){
             //then if named folder does not exist already create the folder
-            $foldernamebox = $database->escape_value(trim($_POST['foldernamebox']));
+            $foldernamebox = clean(trim($_POST['foldernamebox']));
             if(!file_exists("images". DS . $session1->user_id . DS . $foldernamebox)){
                 if(!mkdir("images". DS . $session1->user_id . DS . $foldernamebox)){
                     $errors = true;

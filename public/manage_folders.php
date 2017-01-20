@@ -29,9 +29,9 @@ echo '<tr id=""><th id="thfolderbar">Folder</th><th id="thfolderbar">Folder Name
 
 
 foreach($users_folders as $folder){
-echo '<tr id="tablefolderbar"><td id="folderimage"><a href="edit_folder?id='. $folder->id . '"><img id="folderimage" src="../public/images/icons/folderpic.png" class="img-responsive"></td></a>';
+echo '<tr id="tablefolderbar"><td id="folderimage"><a href="edit_folder.php?id='. $folder->id . '"><img id="folderimage" src="../public/images/icons/folderpic.png" class="img-responsive"></td></a>';
 echo'<td id="tablefolderbar">' . ucfirst($folder->foldername) . '</td>';
-echo'<td id="tablefolderbar"><a href="edit_folder?id='. $folder->id . '"> Edit</a> / <a href="delete_folder?id='. $folder->id . '">Delete</a></td>';
+echo'<td id="tablefolderbar"><a href="edit_folder.php?id='. $folder->id . '"> Edit</a> / <a href="delete_folder.php?id='. $folder->id . '">Delete</a></td>';
 echo '<td id="tablefolderbar"> ' . FOLDER_PATH . DS . ucfirst($folder->location) . '</td></tr>';
 
 }
