@@ -219,5 +219,5 @@ public function try_to_send_mail_to_Admin() {
 
 }
 
-
+//$mailman = New Mailman;
 ?>

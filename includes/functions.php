@@ -119,8 +119,24 @@ function clean($string) {
    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 }
 
-function is_session_started()
-{
+//^[a-zA-Z0-9_-]*$
+
+function cleanUPfeild($string) {
+   $newstring = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.    
+   $cleanstring = preg_replace('/[^a-zA-Z0-9\_\-]/', '', $newstring); // Removes special chars.
+   
+   return $cleanstring === $string ? $cleanstring : FALSE;
+   
+}
+
+function cleanUP($string) {
+   $newstring = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.    
+   $cleanstring = preg_replace('/[^a-zA-Z0-9\_\-]/', '', $newstring); // Removes special chars.
+   
+   return $cleanstring;
+   
+}
+function is_session_started(){
 global $session1;
 
     if ( php_sapi_name() !== 'cli' ) {
@@ -149,7 +165,7 @@ if(isset($_POST['submit'])) {
   $photo->attach_file($_FILES['file_upload']);
   
    if(trim($_POST['selectfolder']) <> "Make new box"){
-    $selectfolder = clean(trim($_POST['selectfolder']));
+    $selectfolder = strtolower(clean(trim($_POST['selectfolder'])));
     $photo->set_path("images" . DS . $session1->user_id . DS . $selectfolder .  DS . $photo->filename);
     $photo->folder = $selectfolder;
     
@@ -288,6 +304,61 @@ echo $html;
 
 }
 
+function password_encrypt($password){
+$hash_format = "$2y$10$";
+
+$salt_length = 22;
+
+$salt = generate_salt($salt_length);
+$format_and_salt = $hash_format . $salt;
+$hash = crypt($password, $format_and_salt);
+return $hash;
+}
+
+function generate_salt($length){
+    //Not 100% unique, not 100% random, but good enough for a salt
+    // MD5 returns 32 characters
+    $unique_random_string = md5(uniqid(mt_rand(), true));
+
+    // Valid characters for a salt are [a-zA-Z0-9.\]
+    $base64_string = base64_encode($unique_random_string);
+
+    //But not '+' which is valid in base64 encoding
+    $modified_base64_string = str_replace('+', '.', $base64_string);
+
+    // Truncate string to the correct length
+    $salt = substr($modified_base64_string, 0, $length);
+
+    return $salt;   
+}
+
+
+/*
+function password_check($password, $existing_hash){
+    //existing hash contains format and salt at start
+    $hash = crypt($password, $existing_hash);
+    if ($hash === $existing_hash){
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+}
+function attempt_login($username, $password){
+	$admin = User::find_admin_by_username($username);
+	if ($admin) {
+	   if (password_check($password, $admin["hashed_password"])){
+	   	  return $admin;
+	   }
+	   else {
+		 return false;
+	   }
+	}
+	else {
+		 return false;
+	}    
+}
+*/
 // Make sure file exists or else create new file $
 //Make sure file is writable or else output an error $
 // Append new logs to EoF $

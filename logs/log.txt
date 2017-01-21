@@ -108,3 +108,7 @@ Log file cleared on 2016-09-13 | 02:40:17 by User ID 1.
 2017-01-20 02:08:44 | Login: The user sonicboom logged in.
 2017-01-20 03:03:11 | Login: The user sonicboom logged in.
 2017-01-20 05:09:50 | Login: The user sonicboom logged in.
+2017-01-21 02:24:38 | Login: The user sonicboom logged in.
+2017-01-21 03:46:45 | Login: The user sonicboom logged in.
+2017-01-21 04:06:39 | Login: The user sonicboom logged in.
+2017-01-21 08:21:02 | Login: The user solflower logged in.

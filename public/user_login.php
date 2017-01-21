@@ -8,12 +8,12 @@ if($session1->is_logged_in()) {
 // Remember to give your form's submit tag a name="submit" attribute!
 if (isset($_POST['submit'])) { // Form has been submitted.
 
-	$username = $database->escape_value(trim($_POST['username']));
-	$password = $database->escape_value(trim($_POST['password']));
+	$username = cleanUP(trim($_POST['username']));
+	$password = cleanUP(trim($_POST['password']));
+		
       
       // Check database to see if username/password exist.
-      
-      $found_user = User::authenticate($username, $password);
+      $found_user = User::attempt_login($username, $password);
        
       if ($found_user) {
 	$session1->login($found_user);
