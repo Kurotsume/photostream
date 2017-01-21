@@ -2,6 +2,7 @@
 
 require_once(LIB_PATH.DS."functions.php");
 require_once("database.php");
+require_once("mailman.php");
 //require_once('../../includes/session1.php');
 
 class User extends DatabaseObject {
@@ -39,6 +40,52 @@ class User extends DatabaseObject {
 	  
 	}
               
+        public static function find_user_by_username($username=""){
+            global $database;
+            $username = clean($username);
+            $sql = "SELECT * FROM " .  self::$table_name . " WHERE username='" . $username . "' LIMIT 1";
+            $user_array = self::find_by_sql($sql);
+            return !empty($user_array) ? array_shift($user_array) : false;                          
+        }
+        
+        public static function convert_password($username, $password){
+	  global $database;
+        ////////
+        
+            $sql = "UPDATE " . static::$table_name . " SET password='";
+            $sql .= $password . "'";
+            $sql .= " WHERE username='" . $username . "'";
+            $database->query($sql);
+            return ($database->affected_rows() == 1)? true: false;
+        
+        }
+        //////
+        
+        public static function password_check($password, $existing_hash){
+            //existing hash contains format and salt at start
+            $hash = crypt($password, $existing_hash);
+            if ($hash === $existing_hash){
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+        }
+        
+        public static function attempt_login($username="", $password=""){
+            $admin = Static::find_user_by_username($username);
+            if ($admin) {
+                if (static::password_check($password, $admin->password)){
+                    return $admin;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }    
+        }      
+              
+              
         public static function create_post_user($username, $password, $first_name, $last_name, $user_role, $email) {
             global $database;
             
@@ -72,6 +119,7 @@ class User extends DatabaseObject {
 	
       public function create() {
       	global $database;
+      	
       	// DOn't forget your SQL syntax and good habits:
       	// - INSERT INTO table (key, key) VALUES ('value', 'value')
       	// - single-qoutes around all values
@@ -91,6 +139,11 @@ class User extends DatabaseObject {
       		  
       	if($database->query($sql)) {
 	  $this->id = $database->insert_id();
+            $mailman = New Mailman;            
+            $mailman->touser = $this;
+            $mailman->message = "Thanks for joining Photostream!</br></br>Your username is: {$this->username}</br></br>Hope to see your great pictures soon!";
+            $mailman->try_to_send_mail_from_Admin();
+            
 	  return true;      	
       	} else {
 	  return false;
