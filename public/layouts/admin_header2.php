@@ -8,12 +8,6 @@
   
 <body>
 <div class="container">
-    <div class="row">
-        <div id="header">
-  	   <h1>Photostream: Admin</h1>
-        </div>
-    </div><!-- Row -->
-    
 <div class="row">
     <nav class="navbar navbar-default navbar-inverse" role="navigation">
       <div class="container-fluid">
@@ -45,3 +39,9 @@
       </div><!-- /.container-fluid -->
     </nav><!-- /.navbar navbar-default navbar-inverse -->
 </div> <!-- Row -->
+</br></br>
+<div class="row">
+    <div id="header">
+        <h1>Photostream</h1>
+    </div>
+</div><!-- Row -->
