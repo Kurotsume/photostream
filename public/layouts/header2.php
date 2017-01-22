@@ -1,21 +1,17 @@
 <html>
  <head>
+ <link rel="icon" href="data:;base64,iVBORw0KGgo=">
  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-  <title>Photostream</title>
+       <title>Photostream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="http://localhost/ExerciseFiles/Chapter_15/15_03/btb_sandbox/Less/dist/css/bootstrap.min.css" rel="stylesheet">
  </head>
   
 <body>
+<script src="javascripts/navbar.js" type="text/javascript"></script>
 <div class="container">
-    <div class="row">
-        <div id="header">
-  	   <h1>Photostream</h1>
-        </div>
-    </div><!-- Row -->
-    
-<div class="row">
-    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+<div class="row" id="navbar">
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" id="nav_bar" role="navigation">
       <div class="container-fluid">
       
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,3 +47,9 @@
       </div><!-- /.container-fluid -->
     </nav><!-- /.navbar navbar-default navbar-inverse -->
 </div> <!-- Row -->
+</br></br>
+<div class="row">
+    <div id="header">
+        <h1>Photostream</h1>
+    </div>
+</div><!-- Row -->
