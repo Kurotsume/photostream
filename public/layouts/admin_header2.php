@@ -4,6 +4,7 @@
   <title>Photostream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="http://localhost/ExerciseFiles/Chapter_15/15_03/btb_sandbox/Less/dist/css/bootstrap.min.css" rel="stylesheet">
+     <script src="http://localhost/ExerciseFiles/Chapter_15/15_03/btb_sandbox/Less/dist/js/bootstrap.min.js" type="text/javascript"></script>
  </head>
   
 <body>
@@ -12,7 +13,7 @@
     <nav class="navbar navbar-default navbar-inverse" role="navigation">
       <div class="container-fluid">
       
-        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- Brand and toggle get grouped for better mobile display   !-->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
