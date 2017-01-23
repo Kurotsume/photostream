@@ -5,6 +5,8 @@
        <title>Photostream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="http://localhost/ExerciseFiles/Chapter_15/15_03/btb_sandbox/Less/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+   <script src="http://localhost/ExerciseFiles/Chapter_15/15_03/btb_sandbox/Less/dist/js/bootstrap.min.js" type="text/javascript"></script>
  </head>
   
 <body>
