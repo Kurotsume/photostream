@@ -23,14 +23,15 @@ if(isset($_POST['submit'])) {
         
         //$mailman->touser = User::find_by_id(22); 
         //$mailman->fromuser = User::find_by_id(22);
+        $touser = New User;
+        $touser->first_name = $first_name;
+        $touser->last_name = $last_name;
+        $touser->email = $emailadd;
+        $mailman->emailadd = $Emessage;
         
-        $mailman->fname = $first_name;
-        $mailman->lname = $last_name;
-        $mailman->emailadd = $emailadd;
-        $mailman->Emessage = $Emessage;
-        
+                
         //Mailman::try_to_send_mail_to_Admin($first_name, $last_name, $emailadd, $Emessage="");
-        $mailman->try_to_send_mail_to_Admin();
+        $mailman->try_to_send_mail_to_Admin($touser);
         
         
         

@@ -84,7 +84,7 @@ public $Emessage;
   
 }
 
-public function try_to_send_mail_from_Admin() {
+public function try_to_send_mail_from_Admin($touser="") {
  
  
     date_default_timezone_set('Etc/UTC');
@@ -131,7 +131,7 @@ public function try_to_send_mail_from_Admin() {
     $mail->addReplyTo('admin@thephotostream.org', 'Admin');
 
     //Set who the message is to be sent to
-    $mail->addAddress($this->touser->email, $this->touser->first_name);
+    $mail->addAddress($touser->email, $touser->first_name);
 
     //Set the subject line
     $mail->Subject = 'Message From Photo Gallery';
@@ -150,7 +150,7 @@ public function try_to_send_mail_from_Admin() {
   
 }
 
-public function try_to_send_mail_to_Admin() {
+public function try_to_send_mail_to_Admin($touser="") {
     date_default_timezone_set('Etc/UTC');
     
     $mail = new PHPMailer;
@@ -190,10 +190,10 @@ public function try_to_send_mail_to_Admin() {
 
 
     //Set who the message is to be sent from
-    $mail->setFrom($this->emailadd, $this->fname. " " . $this->lname);
+    $mail->setFrom($touser->email, $touser->first_name. " " . $touser->last_name);
 
     //Set an alternative reply-to address
-    $mail->addReplyTo($this->emailadd, $this->fname. " " . $this->lname);
+    $mail->addReplyTo($touser->email, $touser->first_name. " " . $touser->last_name);
 
     //Set who the message is to be sent to
     $mail->addAddress('admin@thephotostream.org', 'Admin');

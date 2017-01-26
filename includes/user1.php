@@ -141,7 +141,7 @@ class User extends DatabaseObject {
 	  $this->id = $database->insert_id();
             $mailman = New Mailman;            
             $mailman->touser = $this;
-            $mailman->message = "Thanks for joining Photostream!</br></br>Your username is: {$this->username}</br></br>Hope to see your great pictures soon!";
+            $mailman->Emessage = "Thanks for joining Photostream! Your username is: ". $this->username . " Hope to see your great pictures soon!";
             $mailman->try_to_send_mail_from_Admin();
             
 	  return true;      	
